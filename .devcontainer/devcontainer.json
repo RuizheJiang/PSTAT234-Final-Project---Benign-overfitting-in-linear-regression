@@ -1,0 +1,33 @@
+{
+    "name": "PSTAT234-FinalProject",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "overrideCommand": false,
+    "shutdownAction": "none",
+    
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/jovyan/work,type=bind", 
+    "workspaceFolder": "/home/jovyan/work",
+
+    "forwardPorts": [8888],
+    "portsAttributes": {
+        "8888": {
+            "label": "JupyterLab",
+            "onAutoForward": "ignore"
+        }
+    },
+		
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "/opt/conda/bin/python"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "quarto.quarto",
+                "analytic-signal.preview-pdf"
+            ]
+        }
+    }
+}
