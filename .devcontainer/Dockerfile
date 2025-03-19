@@ -28,6 +28,15 @@ RUN groupadd jovyan && \
 
 USER ${NB_USER}
 
+USER root
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        texlive-xetex \
+        texlive-fonts-recommended \
+        texlive-plain-generic && \
+    rm -rf /var/lib/apt/lists/*
+USER ${NB_USER}
+
 ### Install Python packages needed for the final project
 RUN pip install --no-cache-dir \
     jupyterlab-quarto==0.2.8 \
